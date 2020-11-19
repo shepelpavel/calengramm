@@ -1,0 +1,34 @@
+<?php
+
+$telegrammKey = '';
+
+$weekArr = [
+    0 => [
+        'fullrus' => 'воскресенье',
+        'shorteng' => 'sun'
+    ],
+    1 => [
+        'fullrus' => 'понедельник',
+        'shorteng' => 'mon'
+    ],
+    2 => [
+        'fullrus' => 'вторник',
+        'shorteng' => 'tue'
+    ],
+    3 => [
+        'fullrus' => 'среда',
+        'shorteng' => 'wed'
+    ],
+    4 => [
+        'fullrus' => 'четверг',
+        'shorteng' => 'thu'
+    ],
+    5 => [
+        'fullrus' => 'пятница',
+        'shorteng' => 'fri'
+    ],
+    6 => [
+        'fullrus' => 'суббота',
+        'shorteng' => 'sat'
+    ]
+];
