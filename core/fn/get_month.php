@@ -1,10 +1,13 @@
 <?php
 
+if (empty($_POST['date'])) {
+    return;
+}
 require_once($_SERVER['DOCUMENT_ROOT'] . '/core/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/core/fn/function.php');
 
-$timestamp = time();
-$first_day_month = date('N', strtotime(date('Y-m-') . '01' . date(' H:i:s')));
+$timestamp = intval($_POST['date']);
+$first_day_month = date('N', strtotime(date('Y-m-', $timestamp) . '01' . date(' H:i:s', $timestamp)));
 $current_week_day = date('N', $timestamp);
 $current_num_day = date('j', $timestamp);
 $day_in_month = date('t', $timestamp);
