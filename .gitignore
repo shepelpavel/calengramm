@@ -1,1 +1,4 @@
 core/config.php
+_assets
+node_modules/
+package-lock.json

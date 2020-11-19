@@ -1,5 +1,7 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/chunks/header.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/core/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/core/fn/function.php');
 
 $timestamp = time();
 $first_day_month = date('N', strtotime(date('Y-m-') . '01' . date(' H:i:s')));
@@ -45,5 +47,4 @@ for ($i = 1; $i <= 42; $i++) {
 $result .= '</tr></table>';
 
 echo $result;
-
-include_once($_SERVER['DOCUMENT_ROOT'] . '/chunks/footer.php');
+return;
