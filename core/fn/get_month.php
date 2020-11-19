@@ -11,6 +11,7 @@ $first_day_month = date('N', strtotime(date('Y-m-', $timestamp) . '01' . date(' 
 $current_week_day = date('N', $timestamp);
 $current_num_day = date('j', $timestamp);
 $day_in_month = date('t', $timestamp);
+$today = strtotime(date('Y-m-d'));
 
 $result = '<table><tr>';
 $date_num = 1;
@@ -31,6 +32,7 @@ for ($i = 1; $i <= 42; $i++) {
     }
 
     $date_week = $weekArr[$i % 7]['shorteng'];
+    $date_timestamp = mktime(0, 0, 0, date('m', $timestamp), $date_num, date('Y', $timestamp));
 
     if ($i == 8 || $i == 15 || $i == 22 || $i == 29 || $i == 36) {
         $result .= '</tr><tr>';
@@ -38,16 +40,22 @@ for ($i = 1; $i <= 42; $i++) {
 
     if ($i >= $first_day_month && $date_num <= $day_in_month) {
         $current_class = '';
-        if ($date_num == $current_num_day) {
+        if ($date_timestamp == $today) {
             $current_class = 'today';
         }
-        $result .= '<td class="current-month ' . $current_class . '" data-day="' . $date_week . '" data-week="' . $weed_num . '">' . $date_num . '</td>';
+        $result .= '<td class="current-month ' . $current_class . '" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '</td>';
         $date_num++;
     } else {
         $result .= '<td class="other-month" data-day="' . $date_week . '" data-week="' . $weed_num . '">---</td>';
     }
 }
 $result .= '</tr></table>';
+
+$prev_date = mktime(0, 0, 0, date('m', $timestamp) - 1, date('d', $timestamp), date('Y', $timestamp));
+$next_date = mktime(0, 0, 0, date('m', $timestamp) + 1, date('d', $timestamp), date('Y', $timestamp));
+
+$result .= '<button class="js-get-month" data-date="' . $prev_date . '">prev</button>';
+$result .= '<button class="js-get-month" data-date="' . $next_date . '">next</button>';
 
 echo $result;
 return;

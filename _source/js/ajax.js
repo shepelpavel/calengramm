@@ -23,6 +23,11 @@ $(document).ready(function () {
     // получение стартовой страницы
     getMonth(Math.round(new Date().getTime() / 1000));
 
+    // получение месяца
+    $('body').on('click', '.js-get-month', function(e) {
+        var _date = $(e.target).attr('data-date');
+        getMonth(_date)
+    });
 
     // перехват клавиши "назад"
     history.pushState(null, null, location.href);
