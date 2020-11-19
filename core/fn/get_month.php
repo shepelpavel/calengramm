@@ -55,6 +55,7 @@ $prev_date = mktime(0, 0, 0, date('m', $timestamp) - 1, date('d', $timestamp), d
 $next_date = mktime(0, 0, 0, date('m', $timestamp) + 1, date('d', $timestamp), date('Y', $timestamp));
 
 $result .= '<button class="js-get-month" data-date="' . $prev_date . '">prev</button>';
+$result .= '<button class="js-get-month" data-date="' . $today . '">today</button>';
 $result .= '<button class="js-get-month" data-date="' . $next_date . '">next</button>';
 
 echo $result;
