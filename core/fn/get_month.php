@@ -33,6 +33,7 @@ for ($i = 1; $i <= 42; $i++) {
 
     $date_week = $weekArr[$i % 7]['shorteng'];
     $date_timestamp = mktime(0, 0, 0, date('m', $timestamp), $date_num, date('Y', $timestamp));
+    $events_arr = getEventsDay($date_timestamp);
 
     if ($i == 8 || $i == 15 || $i == 22 || $i == 29 || $i == 36) {
         $result .= '</tr><tr>';
@@ -43,7 +44,7 @@ for ($i = 1; $i <= 42; $i++) {
         if ($date_timestamp == $today) {
             $current_class = 'today';
         }
-        $result .= '<td class="current-month ' . $current_class . '" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '</td>';
+        $result .= '<td class="current-month ' . $current_class . '" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '<span>' . $events_arr[0]['title'] . '</span></td>';
         $date_num++;
     } else {
         $result .= '<td class="other-month" data-day="' . $date_week . '" data-week="' . $weed_num . '">---</td>';

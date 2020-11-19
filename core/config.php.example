@@ -1,9 +1,20 @@
 <?php
 
+// version
 $version = '0.0.1';
 
+// bots key
 $telegrammKey = '';
 
+// database
+$dbhost     = 'localhost';
+$dbuser     = '';
+$dbpasswd   = '';
+$dbname     = '';
+$connect    = mysqli_connect($dbhost, $dbuser, $dbpasswd, $dbname) or die('error');
+mysqli_set_charset($connect, 'utf8');
+
+// date locale
 $weekArr = [
     0 => [
         'fullrus' => 'воскресенье',

@@ -1,15 +1,22 @@
 <?php
 
 // функция получения контента страницы из БД
-function get_pages_content($name)
+function getEventsDay($day_timestamp)
 {
     global $dbhost, $dbuser, $dbpasswd, $dbname, $connect;
     $result = 'error';
-    $query = 'SELECT `content` FROM `pages_content` WHERE `name` = "' . $name . '";';
-    $content = mysqli_query($connect, $query) or die('error');
-    if ($content) {
-        $content = $content->fetch_assoc();
-        $result = $content['content'];
+    $day_start = $day_timestamp;
+    $day_end = $day_timestamp + 86400;
+    $query = "SELECT `title`,`description` FROM `events` WHERE `date` BETWEEN $day_start and $day_end;";
+    $result = mysqli_query($connect, $query) or die('error');
+    if ($result) {
+        $events = [];
+        while ($res = $result->fetch_assoc()) {
+            $events[] = [
+                'title' => $res['title'],
+                'description' => $res['description']
+            ];
+        }
     }
-    return $result;
+    return $events;
 }
