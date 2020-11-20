@@ -24,16 +24,3 @@
 </head>
 
 <body>
-    <style>
-        table {
-            width: 100%;
-        }
-
-        td.current-month {
-            border: 1px solid;
-        }
-
-        td.today {
-            background-color: lightblue;
-        }
-    </style>

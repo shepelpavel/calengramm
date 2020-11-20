@@ -13,7 +13,7 @@ $current_num_day = date('j', $timestamp);
 $day_in_month = date('t', $timestamp);
 $today = strtotime(date('Y-m-d'));
 
-$result = '<table><tr>';
+$result = '<table class="calendar"><tr class="calendar__row">';
 $date_num = 1;
 $date_week = '';
 for ($i = 1; $i <= 42; $i++) {
@@ -36,7 +36,7 @@ for ($i = 1; $i <= 42; $i++) {
     $events_arr = getEventsDay($date_timestamp);
 
     if ($i == 8 || $i == 15 || $i == 22 || $i == 29 || $i == 36) {
-        $result .= '</tr><tr>';
+        $result .= '</tr><tr class="calendar__row">';
     }
 
     if ($i >= $first_day_month && $date_num <= $day_in_month) {
@@ -44,10 +44,10 @@ for ($i = 1; $i <= 42; $i++) {
         if ($date_timestamp == $today) {
             $current_class = 'today';
         }
-        $result .= '<td class="current-month ' . $current_class . '" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '<span>' . $events_arr[0]['title'] . '</span></td>';
+        $result .= '<td class="calendar__row_item current-month ' . $current_class . '"><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '<span>' . $events_arr[0]['title'] . '</span></div></td>';
         $date_num++;
     } else {
-        $result .= '<td class="other-month" data-day="' . $date_week . '" data-week="' . $weed_num . '">---</td>';
+        $result .= '<td class="calendar__row_item other-month" ><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '"></div></td>';
     }
 }
 $result .= '</tr></table>';
@@ -55,9 +55,11 @@ $result .= '</tr></table>';
 $prev_date = mktime(0, 0, 0, date('m', $timestamp) - 1, date('d', $timestamp), date('Y', $timestamp));
 $next_date = mktime(0, 0, 0, date('m', $timestamp) + 1, date('d', $timestamp), date('Y', $timestamp));
 
-$result .= '<button class="js-get-month" data-date="' . $prev_date . '">prev</button>';
-$result .= '<button class="js-get-month" data-date="' . $today . '">today</button>';
-$result .= '<button class="js-get-month" data-date="' . $next_date . '">next</button>';
+$result .= '<div class="buttons">';
+$result .= '<div class="button js-get-month" data-date="' . $prev_date . '">prev</div>';
+$result .= '<div class="button js-get-month" data-date="' . $today . '">today</div>';
+$result .= '<div class="button js-get-month" data-date="' . $next_date . '">next</div>';
+$result .= '</div>';
 
 echo $result;
 return;

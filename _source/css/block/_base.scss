@@ -1,4 +1,12 @@
 body {
-    font-size: 26px;
-    text-align: center;
+    font-family: 'Gardens CM';
+    font-size: 0.8rem;
+    background-color: $black;
+    color: $white;
+}
+
+#calendar {
+    width: calc(100vw - 12px);
+    height: calc(100vh - 12px);
+    padding: 6px;
 }
