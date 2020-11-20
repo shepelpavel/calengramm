@@ -22,7 +22,7 @@ if (!empty($events_arr)) {
         } else {
             $color = $v['color'];
         }
-        $events .= '<div class="modal__events_event js-get-event" style="background-color: #' . $color . '" data-id="' . $v['id'] . '">' . $v['title'] . '</div>';
+        $events .= '<div class="modal__events_event js-get-event" style="background-color: #' . $color . '" data-id="' . $v['id'] . '"><div class="modal__events_event_time">' . date('H:i', $v['date']) . '</div>&nbsp;<div class="modal__events_event_title">' . $v['title'] . '</div><div class="modal__events_event_button"><img src="/_assets/img/style/pen.png"></div><div class="modal__events_event_button"><img src="/_assets/img/style/trash.png"></div></div>';
     }
 } else {
     $events .= '<div class="modal__events_empty">Нет событий</div>';

@@ -64,6 +64,23 @@
             line-height: 0.9rem;
             padding: 6px 8px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            &_time {
+                color: $alttext;
+            }
+
+            &_title {
+                flex-basis: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            &_button {
+                margin: 0 2px;
+                padding: 0 6px;
+            }
 
             &:hover {
                 opacity: 0.8;

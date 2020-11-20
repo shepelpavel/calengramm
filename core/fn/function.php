@@ -19,6 +19,7 @@ function getEventsDay($day_timestamp)
             $events[] = [
                 'id' => $res['id'],
                 'title' => $res['title'],
+                'date' => $res['date'],
             ];
         }
     }

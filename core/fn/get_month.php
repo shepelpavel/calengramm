@@ -42,7 +42,12 @@ for ($i = 1; $i <= 42; $i++) {
 
     $events = '';
     foreach ($events_arr as $k => $v) {
-        $events .= '<div class="calendar__event" data-id="' . $v['id'] . '">' . $v['title'] . '</div>';
+        if (empty($v['color'])) {
+            $color = '0a0a0a';
+        } else {
+            $color = $v['color'];
+        }
+        $events .= '<div class="calendar__event" style="background-color: #' . $color . '" data-id="' . $v['id'] . '"><span class="calendar__event_time">' . date('H:i', $v['date']) . '</span>&nbsp;' . $v['title'] . '</div>';
     }
 
     if ($i == 8 || $i == 15 || $i == 22 || $i == 29 || $i == 36) {
