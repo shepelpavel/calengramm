@@ -7,8 +7,7 @@ function getEventsDay($day_timestamp)
     $events = [];
     $day_start = $day_timestamp;
     $day_end = $day_timestamp + 86400;
-    $query = "SELECT `id`,`title`
-    FROM `events`
+    $query = "SELECT * FROM `events`
     WHERE
     (`date` BETWEEN $day_start AND $day_end)
     OR
@@ -16,7 +15,6 @@ function getEventsDay($day_timestamp)
     ORDER BY `date` ASC;";
     $result = mysqli_query($connect, $query) or die('error');
     if ($result) {
-        $events = [];
         while ($res = $result->fetch_assoc()) {
             $events[] = [
                 'id' => $res['id'],
@@ -32,8 +30,7 @@ function getEvent($event_id)
 {
     global $dbhost, $dbuser, $dbpasswd, $dbname, $connect;
     $event = [];
-    $query = "SELECT *
-    FROM `events`
+    $query = "SELECT * FROM `events`
     WHERE
     `id` = $event_id";
     $result = mysqli_query($connect, $query) or die('error');

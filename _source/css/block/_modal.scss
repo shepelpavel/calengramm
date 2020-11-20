@@ -15,6 +15,8 @@
         width: 80%;
         height: 80%;
         background-color: $black;
+        display: flex;
+        flex-direction: column;
     }
 
     &__close {
@@ -23,6 +25,7 @@
         top: 6px;
         width: 30px;
         height: 30px;
+        background-color: $black;
 
         &::before,
         &::after {
@@ -31,7 +34,7 @@
             width: 30px;
             height: 2px;
             background-color: $white;
-            left: 1px;
+            left: 0;
             top: 14px;
         }
 
@@ -41,6 +44,36 @@
 
         &::after {
             transform: rotate(-45deg);
+        }
+    }
+
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        line-height: 1rem;
+        height: 26px;
+        padding: 6px 8px;
+        border-bottom: 1px solid $border;
+    }
+
+    &__events {
+        &_event {
+            font-size: 0.9rem;
+            line-height: 0.9rem;
+            padding: 6px 8px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        &_empty {
+            font-size: 0.9rem;
+            line-height: 0.9rem;
+            padding: 6px 8px;
         }
     }
 }

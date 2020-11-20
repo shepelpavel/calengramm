@@ -12,8 +12,13 @@ $current_week_day = date('N', $timestamp);
 $current_num_day = date('j', $timestamp);
 $day_in_month = date('t', $timestamp);
 $today = strtotime(date('Y-m-d'));
+$result = '';
 
-$result = '<table class="calendar"><tr class="calendar__row">';
+$result .= '<div class="title">';
+$result .= '<div class="title__date">' . date($monthsArr[date('n', $timestamp)] . ' o', $timestamp) . '</div>';
+$result .= '</div>';
+
+$result .= '<table class="calendar"><tr class="calendar__row">';
 $date_num = 1;
 $date_week = '';
 for ($i = 1; $i <= 42; $i++) {
@@ -37,7 +42,7 @@ for ($i = 1; $i <= 42; $i++) {
 
     $events = '';
     foreach ($events_arr as $k => $v) {
-        $events .= '<div class="calendar__event js-get-event" data-id="' . $v['id'] . '">' . $v['title'] . '</div>';
+        $events .= '<div class="calendar__event" data-id="' . $v['id'] . '">' . $v['title'] . '</div>';
     }
 
     if ($i == 8 || $i == 15 || $i == 22 || $i == 29 || $i == 36) {
@@ -49,7 +54,7 @@ for ($i = 1; $i <= 42; $i++) {
         if ($date_timestamp == $today) {
             $current_class = 'today';
         }
-        $result .= '<td class="calendar__row_item js-day current-month week-' . $date_week . ' ' . $current_class . '"><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '"><div class="calendar__day_num">' . $date_num . '</div>' . $events . '</div></td>';
+        $result .= '<td class="calendar__row_item js-day current-month week-' . $date_week . ' ' . $current_class . '"><div class="calendar__day js-get-day" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '"><div class="calendar__day_num">' . $date_num . '</div>' . $events . '</div></td>';
         $date_num++;
     } else {
         $result .= '<td class="calendar__row_item other-month" ><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '"></div></td>';

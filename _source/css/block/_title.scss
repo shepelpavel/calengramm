@@ -1,0 +1,11 @@
+.title {
+    display: flex;
+    justify-content: flex-end;
+    height: 26px;
+    padding: 2px 0;
+
+    &__date {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+}

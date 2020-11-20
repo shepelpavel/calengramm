@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Ноя 20 2020 г., 12:35
+-- Время создания: Ноя 20 2020 г., 16:44
 -- Версия сервера: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- Версия PHP: 7.2.34-8+ubuntu20.04.1+deb.sury.org+1
 
@@ -36,16 +36,18 @@ CREATE TABLE `events` (
   `title` text NOT NULL,
   `description` text DEFAULT NULL,
   `alerts` varchar(255) DEFAULT NULL,
-  `groups` varchar(255) DEFAULT NULL
+  `groups` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `events`
 --
 
-INSERT INTO `events` (`id`, `date`, `enddate`, `isrepeat`, `title`, `description`, `alerts`, `groups`) VALUES
-(1, '1605873600', '1605877200', '', 'test title', 'test description', '', 'family'),
-(2, '1606116012', '1606306812', '', 'test title 2', 'test description 2', '', 'family');
+INSERT INTO `events` (`id`, `date`, `enddate`, `isrepeat`, `title`, `description`, `alerts`, `groups`, `color`) VALUES
+(1, '1605873600', '1605877200', NULL, 'test title', 'test description', NULL, 'family', NULL),
+(2, '1606652412', '1606998012', NULL, 'test title 2', 'test description 2', NULL, 'family', NULL),
+(5, '1605877200', NULL, NULL, 'test title 3', 'test description 3', NULL, 'family', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `groups`
