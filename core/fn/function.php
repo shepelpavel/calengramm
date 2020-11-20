@@ -1,18 +1,19 @@
 <?php
 
-// функция получения контента страницы из БД
+// функция получения дня из БД
 function getEventsDay($day_timestamp)
 {
     global $dbhost, $dbuser, $dbpasswd, $dbname, $connect;
-    $result = 'error';
+    $events = [];
     $day_start = $day_timestamp;
     $day_end = $day_timestamp + 86400;
-    $query = "SELECT `title`,`description`
+    $query = "SELECT `id`,`title`
     FROM `events`
     WHERE
     (`date` BETWEEN $day_start AND $day_end)
     OR
-    (`date` < $day_start AND `enddate` IS NOT NULL AND `enddate`!='' AND `enddate` > $day_start);";
+    (`date` < $day_start AND `enddate` IS NOT NULL AND `enddate`!='' AND `enddate` > $day_start)
+    ORDER BY `date` ASC;";
     $result = mysqli_query($connect, $query) or die('error');
     if ($result) {
         $events = [];
@@ -20,9 +21,24 @@ function getEventsDay($day_timestamp)
             $events[] = [
                 'id' => $res['id'],
                 'title' => $res['title'],
-                'description' => $res['description']
             ];
         }
     }
     return $events;
+}
+
+// функция получения события из БД
+function getEvent($event_id)
+{
+    global $dbhost, $dbuser, $dbpasswd, $dbname, $connect;
+    $event = [];
+    $query = "SELECT *
+    FROM `events`
+    WHERE
+    `id` = $event_id";
+    $result = mysqli_query($connect, $query) or die('error');
+    if ($result) {
+        $event = $result->fetch_assoc();
+    }
+    return $event;
 }

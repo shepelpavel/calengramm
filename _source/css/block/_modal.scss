@@ -1,0 +1,46 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $shadow;
+
+    &__body {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        height: 80%;
+        background-color: $black;
+    }
+
+    &__close {
+        position: fixed;
+        right: 6px;
+        top: 6px;
+        width: 30px;
+        height: 30px;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: $white;
+            left: 1px;
+            top: 14px;
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
