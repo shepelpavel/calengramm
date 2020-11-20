@@ -44,7 +44,7 @@ for ($i = 1; $i <= 42; $i++) {
         if ($date_timestamp == $today) {
             $current_class = 'today';
         }
-        $result .= '<td class="calendar__row_item current-month ' . $current_class . '"><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '<span>' . $events_arr[0]['title'] . '</span></div></td>';
+        $result .= '<td class="calendar__row_item current-month week-' . $date_week . ' ' . $current_class . '"><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '" data-timestamp="' . $date_timestamp . '">' . $date_num . '<span>' . $events_arr[0]['title'] . '</span></div></td>';
         $date_num++;
     } else {
         $result .= '<td class="calendar__row_item other-month" ><div class="calendar__day" data-day="' . $date_week . '" data-week="' . $weed_num . '"></div></td>';
