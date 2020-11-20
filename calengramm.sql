@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Ноя 19 2020 г., 16:12
+-- Время создания: Ноя 20 2020 г., 12:35
 -- Версия сервера: 10.3.25-MariaDB-0ubuntu0.20.04.1
 -- Версия PHP: 7.2.34-8+ubuntu20.04.1+deb.sury.org+1
 
@@ -31,12 +31,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `events` (
   `id` int(10) NOT NULL,
   `date` varchar(255) NOT NULL,
-  `enddate` varchar(255) NOT NULL,
-  `isrepeat` varchar(255) NOT NULL,
+  `enddate` varchar(255) DEFAULT NULL,
+  `isrepeat` varchar(255) DEFAULT NULL,
   `title` text NOT NULL,
-  `description` text NOT NULL,
-  `alerts` varchar(255) NOT NULL,
-  `groups` varchar(255) NOT NULL
+  `description` text DEFAULT NULL,
+  `alerts` varchar(255) DEFAULT NULL,
+  `groups` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -44,7 +44,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `date`, `enddate`, `isrepeat`, `title`, `description`, `alerts`, `groups`) VALUES
-(1, '1605873600', '1605877200', '', 'test title', 'test description', '', 'family');
+(1, '1605873600', '1605877200', '', 'test title', 'test description', '', 'family'),
+(2, '1606116012', '1606306812', '', 'test title 2', 'test description 2', '', 'family');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `groups` varchar(255) NOT NULL
+  `groups` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -116,7 +117,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `groups`
